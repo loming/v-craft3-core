@@ -1,6 +1,7 @@
 <template>
   <img
     class="image"
+    alt=""
     :src="imageUrl"
     :style="elementCSS"
   />
@@ -14,6 +15,7 @@ import elementStyleMixin from './elementStyleMixin';
 import defaultImageUrl from './assets/default_picture_image.jpg';
 
 export default {
+  name: 'Picture',
   mixins: [elementStyleMixin],
   props: {
     imageUrl: String,

@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import { useSlots } from 'vue';
 import Node from './Node.vue';
 import Indicator from './Indicator.vue';
 import createNodeFromVNode from '../utils/createNodeFromVNode';
 
 export default {
+  name: 'Frame',
   components: {
     Node, Indicator,
   },
@@ -35,7 +37,8 @@ export default {
   },
   methods: {
     createNodesFromSlots() {
-      const defaultSlots = this.$slots.default || [];
+      const slots = useSlots();
+      const defaultSlots = slots.default() || [];
       return defaultSlots
         .map((vnode) => createNodeFromVNode(this.editor, vnode))
         .filter((node) => !!node);

@@ -16,7 +16,7 @@
 
     <el-dialog
       title="Export"
-      :visible.sync="showExportDialog"
+      v-model="showExportDialog"
       :modal="false"
       width="30%"
     >
@@ -27,29 +27,34 @@
           :value="editor.export()"
         />
       </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button size="medium" @click="toggleExportDialog">Close</el-button>
-        <el-button size="medium" type="primary" @click="copyExport">Copy</el-button>
-      </span>
+      <template v-slot:exportFooter>
+        <span class="dialog-footer">
+          <el-button size="medium" @click="toggleExportDialog">Close</el-button>
+          <el-button size="medium" type="primary" @click="copyExport">Copy</el-button>
+        </span>
+      </template>
     </el-dialog>
 
     <el-dialog
       title="Import"
-      :visible.sync="showImportDialog"
+      v-model="showImportDialog"
       :modal="false"
       width="30%"
     >
       <textarea :rows="8" v-model="importData" />
-      <span slot="footer" class="dialog-footer">
-        <el-button size="medium" @click="toggleImportDialog">Close</el-button>
-        <el-button size="medium" type="primary" @click="doImport">Import</el-button>
-      </span>
+      <template v-slot:importFooter>
+        <span class="dialog-footer">
+          <el-button size="medium" @click="toggleImportDialog">Close</el-button>
+          <el-button size="medium" type="primary" @click="doImport">Import</el-button>
+        </span>
+      </template>
     </el-dialog>
   </nav>
 </template>
 
 <script>
 export default {
+  name: 'Navbar',
   inject: [
     'editor',
   ],

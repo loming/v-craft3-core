@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Heading Type">
       <el-radio-group
         :value="elementProps.headingType" @input="updateHeadingType"
@@ -16,6 +16,7 @@
 import { settingMixin } from '@';
 
 export default {
+  name: 'HeadingSetting',
   mixins: [settingMixin],
   methods: {
     updateContent(content) {

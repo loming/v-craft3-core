@@ -1,13 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import { createApp } from 'vue';
+import ElementPlus from 'element-plus';
+import 'element-plus/theme-chalk/index.css';
 import App from './example/App.vue';
 
-Vue.use(ElementUI);
+// Vue.use(ElementUI);
 
-Vue.config.productionTip = false;
+const app = createApp(App);
+app.use(ElementPlus);
 
-new Vue({
-  render: (h) => h(App),
-}).$mount('#app');
+app.mount('#app');

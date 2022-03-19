@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Font Size" v-if="styleExist('font-size')">
       <el-slider :value="getStyle('font-size')" @input="setStyle('font-size', $event)"></el-slider>
     </el-form-item>

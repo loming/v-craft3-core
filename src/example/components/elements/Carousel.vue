@@ -35,6 +35,7 @@ import defaultImageUrl from './assets/default_carousel_image.jpg';
 import defaultImageUrl2 from './assets/default_carousel_image2.jpg';
 
 export default {
+  name: 'Carousel',
   mixins: [elementStyleMixin],
   components: { Editor },
   props: {

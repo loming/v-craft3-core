@@ -5,14 +5,13 @@
     :draggable="true"
     @dragstart="handleDragStart"
     @dragend="handleDragEnd"
-    @dragstart.native="handleDragStart"
-    @dragend.native="handleDragEnd"
   >
     <slot></slot>
   </component>
 </template>
 
 <script>
+import { useSlots } from 'vue';
 import createNodeFromVNode from '../utils/createNodeFromVNode';
 
 export default {
@@ -28,21 +27,23 @@ export default {
     }
   },
   mounted() {
-    if (!this.$slots.blueprint) {
+    const slots = useSlots();
+    if (!slots.blueprint) {
       throw new Error('v-slot:blueprint is required.');
     }
-    if (this.$slots.blueprint.length !== 1) {
+    if (slots.blueprint().length !== 1) {
       throw new Error('v-slot:blueprint must to have only one root element.');
     }
-    if (!createNodeFromVNode(this.editor, this.$slots.blueprint[0])) {
+    if (!createNodeFromVNode(this.editor, slots.blueprint()[0])) {
       throw new Error('The element in v-slot:blueprint is not a valid vue component.');
     }
   },
   methods: {
     handleDragStart(event) {
       event.stopPropagation();
+      const slots = useSlots();
 
-      const node = createNodeFromVNode(this.editor, this.$slots.blueprint[0]);
+      const node = createNodeFromVNode(this.editor, slots.blueprint()[0]);
       this.editor.dragNode(node);
     },
     handleDragEnd(event) {

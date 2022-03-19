@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Width" v-if="styleExist('width')">
       <el-input :value="getStyle('width')" @input="setStyle('width', $event)"></el-input>
     </el-form-item>

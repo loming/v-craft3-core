@@ -52,6 +52,7 @@ import Carousel from './elements/Carousel.vue';
 import Container from './elements/Container.vue';
 
 export default {
+  name: 'ElementSidebar',
   components: {
     Blueprint, Canvas, Paragraph, Heading, Picture, Carousel,
   },

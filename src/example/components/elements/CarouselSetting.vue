@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Height (px)">
       <el-input type="number" :value="elementProps.height" @input="updateHeight" />
     </el-form-item>
@@ -45,6 +45,7 @@
 import { settingMixin } from '@';
 
 export default {
+  name: 'CarouselSetting',
   mixins: [settingMixin],
   computed: {
     slides() {

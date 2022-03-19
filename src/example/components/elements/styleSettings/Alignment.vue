@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Flex Direction" v-if="styleExist('flex-direction')">
       <el-radio-group
         :value="getStyle('flex-direction')"

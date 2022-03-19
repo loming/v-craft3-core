@@ -11,6 +11,7 @@
 import Indicator from '../core/Indicator';
 
 export default {
+  name: 'Indicator',
   props: {
     indicator: Indicator,
   },

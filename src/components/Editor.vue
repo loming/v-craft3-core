@@ -8,6 +8,7 @@
 import Editor from '../core/Editor';
 
 export default {
+  name: 'Editor',
   props: {
     component: [Object, String],
     resolverMap: Object,

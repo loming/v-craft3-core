@@ -14,6 +14,7 @@ import Background from './styleSettings/Background.vue';
 import elementStyleMixin from './elementStyleMixin';
 
 export default {
+  name: 'Container',
   mixins: [elementStyleMixin],
   inject: [
     'editor',

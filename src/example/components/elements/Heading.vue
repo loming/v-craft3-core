@@ -17,6 +17,7 @@ import Editor from './utils/Editor.vue';
 import elementStyleMixin from './elementStyleMixin';
 
 export default {
+  name: 'Heading',
   mixins: [elementStyleMixin],
   components: { Editor },
   props: {

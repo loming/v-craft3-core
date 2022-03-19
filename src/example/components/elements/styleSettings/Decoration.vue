@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Corner Radius" v-if="styleExist('border-radius')">
       <el-slider :value="getStyle('border-radius')" @input="setStyle('border-radius', $event)" />
     </el-form-item>

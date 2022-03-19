@@ -15,6 +15,7 @@ import Editor from './utils/Editor.vue';
 import elementStyleMixin from './elementStyleMixin';
 
 export default {
+  name: 'Paragraph',
   mixins: [elementStyleMixin],
   components: { Editor },
   props: {

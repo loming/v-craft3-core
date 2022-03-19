@@ -4,11 +4,11 @@
     v-bind="node.props"
     :class="{ 'cf-node-selected': isSelected }"
     :draggable="isDraggable"
-    @dragstart.native="handleDragStart"
-    @dragover.native="handleDragOver"
-    @drop.native="handleDrop"
-    @dragend.native="handleDragEnd"
-    @click.native="selectNode"
+    @dragstart="handleDragStart"
+    @dragover="handleDragOver"
+    @drop="handleDrop"
+    @dragend="handleDragEnd"
+    @click="selectNode"
   >
     <Node
       v-for="node in node.children" :key="node.uuid"

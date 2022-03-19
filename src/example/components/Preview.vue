@@ -13,6 +13,7 @@ import { Frame, Canvas } from '@';
 import Paper from './Paper.vue';
 
 export default {
+  name: 'Preview',
   components: {
     Frame, Canvas, Paper,
   },

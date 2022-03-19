@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="top" size="mini" :model="elementProps">
+  <el-form label-position="top" size="small" :model="elementProps">
     <el-row :gutter="20">
       <el-col :span="12">
         <el-form-item label="Top" v-if="styleExist('margin-top')">

@@ -27,7 +27,7 @@
           :value="editor.export()"
         />
       </div>
-      <template v-slot:exportFooter>
+      <template v-slot:footer>
         <span class="dialog-footer">
           <el-button size="medium" @click="toggleExportDialog">Close</el-button>
           <el-button size="medium" type="primary" @click="copyExport">Copy</el-button>
@@ -42,7 +42,7 @@
       width="30%"
     >
       <textarea :rows="8" v-model="importData" />
-      <template v-slot:importFooter>
+      <template v-slot:footer>
         <span class="dialog-footer">
           <el-button size="medium" @click="toggleImportDialog">Close</el-button>
           <el-button size="medium" type="primary" @click="doImport">Import</el-button>

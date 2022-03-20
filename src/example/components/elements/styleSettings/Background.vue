@@ -19,7 +19,7 @@
     <el-form-item label="Attachment">
       <el-radio-group
         :model-value="getStyle('background-attachment')"
-        @input="setStyle('background-attachment', $event)"
+        @change="setStyle('background-attachment', $event)"
       >
         <el-radio-button label="scroll"></el-radio-button>
         <el-radio-button label="fixed"></el-radio-button>

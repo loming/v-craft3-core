@@ -13,12 +13,14 @@
         <Editor
           tag="h3"
           class="title"
-          v-model="slide.title"
-          ></Editor>
+          :value="slide.title"
+          @update:value="value => updateTitle(index, value)"
+        ></Editor>
         <Editor
           tag="h4"
           class="subtitle"
-          v-model="slide.subtitle"
+          :value="slide.subtitle"
+          @input="value => updateSubtitle(index, value)"
           ></Editor>
       </div>
     </el-carousel-item>
@@ -43,6 +45,9 @@ export default {
     interval: Number,
     slides: Array,
   },
+  inject: [
+    'node',
+  ],
   craft: {
     defaultProps: {
       height: 300,
@@ -78,6 +83,24 @@ export default {
       Properties: CarouselSetting,
       Margin,
       Decoration,
+    },
+  },
+  methods: {
+    updateTitle(index, title) {
+      const slides = [...this.slides];
+      slides[index] = {
+        ...slides[index],
+        title,
+      };
+      this.node.setProps({ slides });
+    },
+    updateSubtitle(index, subtitle) {
+      const slides = [...this.slides];
+      slides[index] = {
+        ...slides[index],
+        subtitle,
+      };
+      this.node.setProps({ slides });
     },
   },
 };

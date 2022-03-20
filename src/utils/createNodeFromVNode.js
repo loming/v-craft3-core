@@ -27,8 +27,6 @@ function getCraftConfig(componentName, props, editor) {
 }
 
 function createNodeFromVNode(editor, vnode, parentNode = null) {
-  console.log(vnode);
-
   const componentName = vnode.type.name;
   const { props } = vnode;
 
@@ -42,6 +40,7 @@ function createNodeFromVNode(editor, vnode, parentNode = null) {
   const node = new Node(componentName, nodeProps, parentNode, [], rules, addition);
 
   const vnodeChildren = vnode.children ? vnode.children.default() : null;
+  // console.log(vnodeChildren)
   const children = vnodeChildren
     ? vnodeChildren.map((childVNode) => createNodeFromVNode(editor, childVNode, node))
       .filter((childNode) => !!childNode)

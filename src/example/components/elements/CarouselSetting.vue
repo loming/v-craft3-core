@@ -1,11 +1,11 @@
 <template>
   <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Height (px)">
-      <el-input type="number" :value="elementProps.height" @input="updateHeight" />
+      <el-input type="number" :model-value="elementProps.height" @input="updateHeight" />
     </el-form-item>
 
     <el-form-item label="Interval (ms)">
-      <el-input type="number" :value="elementProps.interval" @input="updateInterval" />
+      <el-input type="number" :model-value="elementProps.interval" @input="updateInterval" />
     </el-form-item>
 
     <label class="el-form-item__label">Slides</label>

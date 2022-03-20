@@ -66,7 +66,7 @@ export default {
     },
     emitInput() {
       const value = this.$refs.editor.innerText;
-      this.$emit('input', value);
+      this.$emit('update:value', value);
     },
     handlePaste(event) {
       event.preventDefault();

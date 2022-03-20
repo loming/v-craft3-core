@@ -4,21 +4,21 @@
     <el-form-item label="Color">
       <el-color-picker
         show-alpha
-        :value="getStyle('background-color')"
+        :model-value="getStyle('background-color')"
         @active-change="setStyle('background-color', $event)"
       />
     </el-form-item>
 
     <el-form-item label="Image">
       <el-input
-        :value="getStyle('background-image')"
+        :model-value="getStyle('background-image')"
         @input="setStyle('background-image', $event)"
       />
     </el-form-item>
 
     <el-form-item label="Attachment">
       <el-radio-group
-        :value="getStyle('background-attachment')"
+        :model-value="getStyle('background-attachment')"
         @input="setStyle('background-attachment', $event)"
       >
         <el-radio-button label="scroll"></el-radio-button>

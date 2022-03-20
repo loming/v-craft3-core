@@ -2,7 +2,7 @@
   <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Heading Type">
       <el-radio-group
-        :value="elementProps.headingType" @input="updateHeadingType"
+        :model-value="elementProps.headingType" @change="updateHeadingType"
       >
         <el-radio-button label="h1"></el-radio-button>
         <el-radio-button label="h2"></el-radio-button>

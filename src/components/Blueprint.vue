@@ -6,52 +6,57 @@
     @dragstart="handleDragStart"
     @dragend="handleDragEnd"
   >
-    <slot></slot>
+    <slot name="blueprint"></slot>
   </component>
 </template>
 
 <script>
-import { useSlots } from 'vue';
+import {
+  defineComponent, inject, onMounted, onBeforeMount, useSlots,
+} from 'vue';
 import createNodeFromVNode from '../utils/createNodeFromVNode';
 
-export default {
+export default defineComponent({
   props: {
     component: [Object, String],
   },
-  inject: [
-    'editor',
-  ],
-  created() {
-    if (!this.editor) {
-      throw new Error('<Blueprint/> must be wrapped with <Editor/>.');
-    }
-  },
-  mounted() {
+  setup() {
     const slots = useSlots();
-    if (!slots.blueprint) {
-      throw new Error('v-slot:blueprint is required.');
-    }
-    if (slots.blueprint().length !== 1) {
-      throw new Error('v-slot:blueprint must to have only one root element.');
-    }
-    if (!createNodeFromVNode(this.editor, slots.blueprint()[0])) {
-      throw new Error('The element in v-slot:blueprint is not a valid vue component.');
-    }
-  },
-  methods: {
-    handleDragStart(event) {
-      event.stopPropagation();
-      const slots = useSlots();
+    const editor = inject('editor');
 
-      const node = createNodeFromVNode(this.editor, slots.blueprint()[0]);
-      this.editor.dragNode(node);
-    },
-    handleDragEnd(event) {
+    onBeforeMount(() => {
+      if (!editor) {
+        throw new Error('<Blueprint/> must be wrapped with <Editor/>.');
+      }
+    });
+
+    onMounted(() => {
+      if (!slots.blueprint) {
+        throw new Error('v-slot:blueprint is required.');
+      }
+      if (slots.blueprint().length !== 1) {
+        throw new Error('v-slot:blueprint must to have only one root element.');
+      }
+      if (!createNodeFromVNode(editor, slots.blueprint()[0])) {
+        throw new Error('The element in v-slot:blueprint is not a valid vue component.');
+      }
+    });
+
+    const handleDragStart = (event) => {
       event.stopPropagation();
 
-      this.editor.dragNode(null);
-      this.editor.indicator.hide();
-    },
+      const node = createNodeFromVNode(editor, slots.blueprint()[0]);
+      editor.dragNode(node);
+    };
+
+    const handleDragEnd = (event) => {
+      event.stopPropagation();
+
+      editor.dragNode(null);
+      editor.indicator.hide();
+    };
+
+    return { handleDragStart, handleDragEnd };
   },
-};
+});
 </script>

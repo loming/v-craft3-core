@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { defineComponent, markRaw } from 'vue';
 import { Editor, Canvas } from '@';
 import SettingSidebar from './components/SettingSidebar.vue';
 import ElementSidebar from './components/ElementSidebar.vue';
@@ -22,20 +23,25 @@ import Picture from './components/elements/Picture.vue';
 import Carousel from './components/elements/Carousel.vue';
 import demoData from './demoData';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     Editor, SettingSidebar, ElementSidebar, Navbar, Preview,
   },
-  data() {
+  setup() {
     return {
       resolverMap: {
-        Canvas, Container, Paragraph, Heading, Picture, Carousel,
+        Canvas: markRaw(Canvas),
+        Container: markRaw(Container),
+        Paragraph: markRaw(Paragraph),
+        Heading: markRaw(Heading),
+        Picture: markRaw(Picture),
+        Carousel: markRaw(Carousel),
       },
       demoData,
     };
   },
-};
+});
 </script>
 
 <style lang="scss">

@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { defineComponent, inject } from 'vue';
 import { Blueprint, Canvas } from '@';
 import ElementBlock from './ElementBlock.vue';
 import Paragraph from './elements/Paragraph.vue';
@@ -51,17 +52,17 @@ import Picture from './elements/Picture.vue';
 import Carousel from './elements/Carousel.vue';
 import Container from './elements/Container.vue';
 
-export default {
+export default defineComponent({
   name: 'ElementSidebar',
   components: {
     Blueprint, Canvas, Paragraph, Heading, Picture, Carousel,
   },
-  inject: [
-    'editor',
-  ],
-  data() {
+  setup() {
+    const editor = inject('editor');
+
     return {
       ElementBlock,
+      editor,
       rowProps: {
         elementStyle: {
           ...Container.craft.defaultProps.elementStyle,
@@ -70,7 +71,7 @@ export default {
       },
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

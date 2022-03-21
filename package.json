@@ -38,7 +38,6 @@
     "eslint-plugin-vue": "^7.0.0-beta.4",
     "eslint-plugin-vuejs-accessibility": "^1.1.1",
     "lint-staged": "^9.5.0",
-    "prettier": "^2.6.0",
     "sass-loader": "~10.1.1",
     "sinon": "13.0.1",
     "vuepress": "^1.4.0"

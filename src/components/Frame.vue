@@ -9,12 +9,14 @@
 </template>
 
 <script>
-import { useSlots } from 'vue';
+import {
+  defineComponent, inject, onBeforeMount, useSlots,
+} from 'vue';
 import Node from './Node.vue';
 import Indicator from './Indicator.vue';
 import createNodeFromVNode from '../utils/createNodeFromVNode';
 
-export default {
+export default defineComponent({
   name: 'Frame',
   components: {
     Node, Indicator,
@@ -22,27 +24,29 @@ export default {
   props: {
     component: [Object, String],
   },
-  inject: [
-    'editor',
-  ],
-  created() {
-    if (!this.editor) {
-      throw new Error('<Frame/> must be wrapped with <Editor/>.');
-    }
+  setup() {
+    const editor = inject('editor');
 
-    if (this.editor.nodes.length === 0) {
-      const nodes = this.createNodesFromSlots();
-      this.editor.setTopLevelNodes(nodes);
-    }
-  },
-  methods: {
-    createNodesFromSlots() {
+    const createNodesFromSlots = () => {
       const slots = useSlots();
       const defaultSlots = slots.default() || [];
       return defaultSlots
-        .map((vnode) => createNodeFromVNode(this.editor, vnode))
+        .map((vnode) => createNodeFromVNode(editor, vnode))
         .filter((node) => !!node);
-    },
+    };
+
+    onBeforeMount(() => {
+      if (!editor) {
+        throw new Error('<Frame/> must be wrapped with <Editor/>.');
+      }
+
+      if (editor.nodes.length === 0) {
+        const nodes = createNodesFromSlots();
+        editor.setTopLevelNodes(nodes);
+      }
+    });
+
+    return { editor, createNodesFromSlots };
   },
-};
+});
 </script>

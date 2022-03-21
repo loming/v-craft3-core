@@ -56,7 +56,8 @@ export default defineComponent({
       editor.indicator.hide();
     };
 
-    return { handleDragStart, handleDragEnd };
+    return { editor, handleDragStart, handleDragEnd };
   },
 });
+
 </script>

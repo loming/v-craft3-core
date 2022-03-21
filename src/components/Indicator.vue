@@ -8,17 +8,20 @@
 </template>
 
 <script>
+import {
+  defineComponent,
+} from 'vue';
 import Indicator from '../core/Indicator';
 
-export default {
+export default defineComponent({
   name: 'Indicator',
   props: {
     indicator: Indicator,
   },
-  methods: {
-    getIndicatorStyle() {
-      const { top, left } = this.indicator.position;
-      const { width, height } = this.indicator.size;
+  setup(props) {
+    const getIndicatorStyle = () => {
+      const { top, left } = props.indicator.position;
+      const { width, height } = props.indicator.size;
 
       const style = {
         top: `${top}px`,
@@ -28,9 +31,13 @@ export default {
       };
 
       return style;
-    },
+    };
+
+    return {
+      getIndicatorStyle,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

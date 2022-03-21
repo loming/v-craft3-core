@@ -50,32 +50,4 @@ function createNodeFromVNode(editor, vnode, parentNode = null) {
   return node;
 }
 
-// function createNodeFromVNode(editor, vnode, parentNode = null) {
-//   console.log(vnode)
-//   if (!vnode.componentOptions) {
-//     return null;
-//   }
-
-//   const componentName = vnode.componentOptions.tag;
-//   let props = vnode.componentOptions.propsData;
-
-//   if (componentName === 'Canvas' && vnode.data.attrs) {
-//     props = { ...props, ...vnode.data.attrs };
-//   }
-
-//   const { rules, addition, defaultProps } = getCraftConfig(componentName, props, editor);
-//   const nodeProps = { ...defaultProps, ...props };
-
-//   const node = new Node(componentName, nodeProps, parentNode, [], rules, addition);
-
-//   const vnodeChildren = vnode.componentOptions.children;
-//   const children = vnodeChildren
-//     ? vnodeChildren.map((childVNode) => createNodeFromVNode(editor, childVNode, node))
-//       .filter((childNode) => !!childNode)
-//     : [];
-//   node.children = children;
-
-//   return node;
-// }
-
 export default createNodeFromVNode;

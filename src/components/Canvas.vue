@@ -5,13 +5,20 @@
 </template>
 
 <script>
-export default {
+import {
+  defineComponent, inject,
+} from 'vue';
+
+export default defineComponent({
   name: 'Canvas',
   props: {
     component: String,
   },
-  inject: [
-    'editor',
-  ],
-};
+  setup() {
+    const editor = inject('editor');
+
+    return { editor };
+  },
+});
+
 </script>

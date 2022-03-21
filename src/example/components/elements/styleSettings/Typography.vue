@@ -2,7 +2,7 @@
   <el-form label-position="top" size="small" :model="elementProps">
     <el-form-item label="Font Size" v-if="styleExist('font-size')">
       <el-slider
-        model-value="getStyle('font-size')"
+        :model-value="getStyle('font-size')"
         @input="setStyle('font-size', $event)"
       />
     </el-form-item>

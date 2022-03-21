@@ -3,7 +3,7 @@
     tag="p"
     :style="elementCSS"
     :value="content"
-    @input="updateContent"
+    @update:value="updateContent($event)"
   ></Editor>
 </template>
 
